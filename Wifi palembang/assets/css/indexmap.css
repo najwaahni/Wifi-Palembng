@@ -1,0 +1,23 @@
+/* ============================================
+   WiFi Gratis Palembang — Index Map Styles
+   ============================================ */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9ff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}

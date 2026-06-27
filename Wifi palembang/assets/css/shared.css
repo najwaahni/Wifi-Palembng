@@ -1,0 +1,40 @@
+/* ============================================
+   WiFi Gratis Palembang — Shared Styles
+   ============================================ */
+
+/* === Material Symbols === */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+/* === Scrollbar Utilities === */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* === Songket/Footer Background === */
+.songket-footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://lh3.googleusercontent.com/aida-public/AB6AXuDDB-tKCVHo4JQ0c_xgBCByBmTO6A-dSvlTz3DlzpbG03GpjGBJQqHjM89tlEA3vBsXZ_t2-nLo9f3hqonG2BY2_JPEbWoU4SskmZ0TWspSBABv1zKly1x70ngp_uPM6MKksnQcqywkCyOa4gOV4V1oTIpdu0Amo-gvJmlA7DDszgKTs0x7xxzmFbRZpSUhxZiFOc9H4Vvi5IvOHrjqJuCSAc03NKwxQrI2OuJAz0t4iGJK4pk6-VNmthQyy98aUUFyjJimS1eZvOnQ');
+    background-size: cover;
+    background-position: center;
+}
+
+/* === Active Nav Border (used on usulkan page) === */
+.active-nav-border {
+    position: relative;
+}
+.active-nav-border::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+}

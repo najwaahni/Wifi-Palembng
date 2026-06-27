@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantuan - Peta Kota Palembang</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#ffe9e8", "error-container": "#ffdad6",
+                        primary: "#bb122a", "on-primary-fixed": "#410006",
+                        secondary: "#5d5f5f", "surface-container-low": "#fff0ef",
+                        "on-primary-fixed-variant": "#93001b", "tertiary-container": "#1d8293",
+                        "tertiary-fixed": "#a4eeff", "secondary-fixed": "#e2e2e2",
+                        "secondary-container": "#dfe0e0", "on-tertiary-fixed-variant": "#004e5a",
+                        outline: "#8f6f6e", "on-tertiary-container": "#ffffff",
+                        "on-tertiary": "#ffffff", "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a", "surface-dim": "#f1d3d2",
+                        "on-background": "#271717", "primary-fixed-dim": "#ffb3b0",
+                        "on-error": "#ffffff", "on-secondary-container": "#616363",
+                        "surface-tint": "#bc132a", "primary-fixed": "#ffdad8",
+                        "on-surface-variant": "#5b403f", "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#ffedeb", "primary-container": "#df323f",
+                        surface: "#fff8f7", "on-tertiary-fixed": "#001f25",
+                        "secondary-fixed-dim": "#c6c6c7", error: "#ba1a1a",
+                        "inverse-surface": "#3e2c2b", "on-primary-container": "#ffffff",
+                        "on-primary": "#ffffff", background: "#fff8f7",
+                        "outline-variant": "#e4bdbc", "on-secondary-fixed-variant": "#454747",
+                        "surface-bright": "#fff8f7", "surface-variant": "#fadcda",
+                        "on-surface": "#271717", "tertiary-fixed-dim": "#7cd3e6",
+                        "surface-container-high": "#ffe1e0", "inverse-primary": "#ffb3b0",
+                        "on-secondary-fixed": "#1a1c1c", tertiary: "#006877",
+                        "surface-container-highest": "#fadcda"
+                    },
+                    borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", "2xl": "1rem", full: "9999px" },
+                    fontFamily: {
+                        headline: ["Inter", "sans-serif"],
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                        label: ["Inter", "sans-serif"]
+                    },
+                    spacing: {
+                        "margin-desktop": "48px", "margin-mobile": "16px",
+                        xl: "32px", lg: "24px", md: "16px", sm: "12px", xs: "4px"
+                    }
+                },
+            },
+        };
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/shared.css">
+    <link rel="stylesheet" href="../assets/css/bantuan.css">
+</head>
+<body class="bg-white text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
+
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-margin-desktop h-20 z-50 shadow-lg flex-none border-b border-white/10 bg-white">
+    <div class="flex items-center gap-3 text-on-surface">
+        <img src="../assets/images/palembang-logo.png" alt="Logo Palembang" class="h-10 w-10 md:h-12 md:w-12 object-contain" />
+        <div class="text-headline-lg font-bold">
+            Peta
+            <div class="text-on-surface-variant text-sm"><span>Kota Palembang</span></div>
+        </div>
+    </div>
+    <div class="hidden md:flex items-center gap-xl">
+        <a class="flex items-center gap-1 font-medium text-on-surface-variant hover:text-primary transition-colors" href="indexmap.html">
+            <span class="material-symbols-outlined text-lg">wifi</span>
+            <span>Cari WiFi</span>
+        </a>
+        <a class="flex items-center gap-1 font-bold border-b-2 pb-1 text-primary border-primary" href="bantuan.html">
+            <span class="material-symbols-outlined text-lg">support_agent</span>
+            <span>Bantuan</span>
+        </a>
+    </div>
+    <div class="flex items-center gap-md">
+        <button class="md:hidden active:scale-95 duration-150 p-2">
+            <span class="material-symbols-outlined text-on-surface-variant" data-icon="menu">menu</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-20">
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">Pusat Bantuan &amp; Laporan</h1>
+        <p class="text-lg text-on-surface-variant max-w-2xl mx-auto">Kami siap membantu Anda mendapatkan koneksi terbaik. Temukan solusi cepat atau laporkan masalah teknis langsung kepada tim kami.</p>
+    </section>
+
+    <!-- Help Categories Grid -->
+    <section class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="speed">speed</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Koneksi Lambat</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">Tips meningkatkan kecepatan koneksi di area publik WiFi Gratis.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="location_off">location_off</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Lokasi Tidak Ditemukan</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">Informasi jangkauan sinyal dan pemetaan titik akses terbaru.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="signal_wifi_off">signal_wifi_off</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">WiFi Tidak Tersambung</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">Panduan langkah-langkah jika perangkat Anda gagal terhubung ke jaringan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Form Section -->
+    <section class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div class="bg-white rounded-xl shadow-lg border border-outline-variant p-8 md:p-12">
+            <div class="mb-8 border-b border-outline-variant/30 pb-6">
+                <h2 class="text-2xl font-bold text-on-surface mb-2">Kirim Laporan Kendala</h2>
+                <p class="text-on-surface-variant text-sm">Lengkapi formulir di bawah ini untuk melaporkan masalah teknis yang Anda alami.</p>
+            </div>
+            <form id="helpForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-on-surface" for="name">Nama Lengkap</label>
+                        <input class="w-full bg-surface-container-low border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg p-3 outline-none transition-all" id="name" placeholder="Masukkan nama" required type="text">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-on-surface" for="email">Email</label>
+                        <input class="w-full bg-surface-container-low border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg p-3 outline-none transition-all" id="email" placeholder="nama@email.com" required type="email">
+                    </div>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-sm font-bold text-on-surface" for="location">Lokasi WiFi</label>
+                    <div class="relative" id="customDropdownContainer">
+                        <!-- Hidden native select for form submission and validation -->
+                        <select class="absolute opacity-0 pointer-events-none w-0 h-0" id="location" required>
+                            <option value="" disabled selected>Pilih Lokasi WiFi...</option>
+                        </select>
+                        
+                        <!-- Trigger Button -->
+                        <button type="button" id="dropdownTrigger" class="w-full bg-surface-container-low border border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg p-3 pl-11 pr-10 text-left outline-none transition-all flex items-center justify-between text-on-surface-variant">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">map</span>
+                            <span id="dropdownSelectedValue">Pilih Lokasi WiFi...</span>
+                            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none transition-transform duration-200" id="dropdownArrow">expand_more</span>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="dropdownMenu" class="absolute z-50 left-0 right-0 top-full mt-2 bg-white border border-outline-variant/40 rounded-xl shadow-xl hidden opacity-0 translate-y-[-10px] transition-all duration-200">
+                            <!-- Search Bar inside dropdown -->
+                            <div class="p-2 border-b border-outline-variant/20 relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                                <input type="text" id="dropdownSearch" class="w-full pl-9 pr-3 py-2 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-sm outline-none focus:border-primary" placeholder="Cari lokasi WiFi...">
+                            </div>
+                            <!-- Options List -->
+                            <div id="dropdownOptions" class="max-h-60 overflow-y-auto py-1 text-sm text-on-surface scrollbar-hide">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-sm font-bold text-on-surface" for="issue">Detail Kendala</label>
+                    <textarea class="w-full bg-surface-container-low border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg p-3 outline-none transition-all resize-none" id="issue" placeholder="Ceritakan masalah yang Anda alami..." required rows="4"></textarea>
+                </div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-outline-variant/30">
+                    <p class="text-xs text-on-surface-variant flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">info</span>
+                        Laporan akan diproses oleh tim teknis dalam 1x24 jam.
+                    </p>
+                    <button class="w-full md:w-auto bg-primary text-white font-bold px-10 py-3.5 rounded-full hover:bg-primary-container active:scale-95 transition-all shadow-md" type="submit">
+                        Kirim Laporan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="songket-footer w-full py-16 px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-12 text-white mt-auto">
+    <div class="space-y-4">
+        <span class="text-2xl font-bold">WiFi Gratis</span>
+        <p class="text-sm leading-relaxed opacity-90 max-w-xs">Inisiatif pemerintah untuk pemerataan akses digital bagi seluruh warga kota secara gratis dan aman.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+        <h4 class="font-bold text-lg">Tautan Cepat</h4>
+        <nav class="flex flex-col gap-2">
+            <a class="text-sm opacity-80 hover:opacity-100 hover:underline transition-all" href="#">Kebijakan Privasi</a>
+            <a class="text-sm opacity-80 hover:opacity-100 hover:underline transition-all" href="#">Syarat &amp; Ketentuan</a>
+            <a class="text-sm opacity-80 hover:opacity-100 hover:underline transition-all" href="#">Kontak Kami</a>
+        </nav>
+    </div>
+    <div class="flex flex-col justify-between">
+        <div class="flex gap-4">
+            <button class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                <span class="material-symbols-outlined">language</span>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                <span class="material-symbols-outlined">share</span>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                <span class="material-symbols-outlined">mail</span>
+            </button>
+        </div>
+        <p class="text-xs mt-8 opacity-70">© 2024 WiFi Gratis Initiative. Semua hak dilindungi.</p>
+    </div>
+</footer>
+
+<!-- Success Toast -->
+<div id="success-toast" class="fixed bottom-6 right-6 bg-green-50 text-green-800 p-4 rounded-xl shadow-lg border border-green-200 transform transition-all duration-300 translate-y-20 opacity-0 hidden flex items-start gap-3 z-50">
+    <span class="material-symbols-outlined text-green-600">check_circle</span>
+    <div>
+        <h4 class="font-bold text-sm">Laporan Terkirim!</h4>
+        <p class="text-xs opacity-90 mt-1">Kami telah menerima laporan Anda dan akan segera merespons ke email Anda.</p>
+    </div>
+    <button onclick="hideToast()" class="text-green-600 hover:text-green-800 ml-2">
+        <span class="material-symbols-outlined text-lg">close</span>
+    </button>
+</div>
+
+<script src="../assets/js/wifi-data.js"></script>
+<script>
+    // Memuat daftar WiFi dari database ke dropdown
+    let wifiList = []; // Simpan data wifi secara global untuk filter pencarian
+
+    async function populateWifiDropdown() {
+        const select = document.getElementById('location');
+        const customOptionsContainer = document.getElementById('dropdownOptions');
+        
+        try {
+            const wifis = await getWifiData();
+            // Urutkan WiFi berdasarkan SSID secara alfabetis
+            wifis.sort((a, b) => a.ssid.localeCompare(b.ssid));
+            wifiList = wifis;
+            
+            // Bersihkan opsi bawaan
+            select.innerHTML = '<option value="" disabled selected>Pilih Lokasi WiFi...</option>';
+            customOptionsContainer.innerHTML = '';
+            
+            wifis.forEach(wifi => {
+                const opt = document.createElement('option');
+                opt.value = wifi.ssid;
+                opt.textContent = wifi.ssid;
+                select.appendChild(opt);
+            });
+
+            renderCustomOptions(wifis);
+        } catch (err) {
+            console.error('Gagal memuat dropdown WiFi:', err);
+        }
+    }
+
+    function renderCustomOptions(items) {
+        const container = document.getElementById('dropdownOptions');
+        container.innerHTML = '';
+
+        if (items.length === 0) {
+            const emptyEl = document.createElement('div');
+            emptyEl.className = 'px-4 py-3 text-on-surface-variant text-center text-xs';
+            emptyEl.textContent = 'Tidak ada lokasi yang cocok';
+            container.appendChild(emptyEl);
+            return;
+        }
+
+        items.forEach(wifi => {
+            const itemEl = document.createElement('div');
+            itemEl.className = 'px-4 py-2.5 hover:bg-surface-container/50 cursor-pointer transition-colors';
+            itemEl.textContent = wifi.ssid;
+            itemEl.addEventListener('click', () => selectWifiOption(wifi.ssid));
+            container.appendChild(itemEl);
+        });
+    }
+
+    function selectWifiOption(ssid) {
+        const select = document.getElementById('location');
+        const triggerValue = document.getElementById('dropdownSelectedValue');
+        const triggerBtn = document.getElementById('dropdownTrigger');
+
+        select.value = ssid;
+        triggerValue.textContent = ssid;
+        triggerBtn.classList.remove('text-on-surface-variant');
+        triggerBtn.classList.add('text-on-surface');
+        closeCustomDropdown();
+    }
+
+    // Toggle Dropdown
+    const dropdownTrigger = document.getElementById('dropdownTrigger');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdownArrow = document.getElementById('dropdownArrow');
+    const dropdownSearch = document.getElementById('dropdownSearch');
+
+    dropdownTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (dropdownMenu.classList.contains('hidden')) {
+            openCustomDropdown();
+        } else {
+            closeCustomDropdown();
+        }
+    });
+
+    function openCustomDropdown() {
+        dropdownMenu.classList.remove('hidden');
+        // Force reflow
+        void dropdownMenu.offsetWidth;
+        dropdownMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
+        dropdownMenu.classList.add('opacity-100', 'translate-y-0');
+        dropdownArrow.classList.add('rotate-180');
+        dropdownSearch.value = '';
+        renderCustomOptions(wifiList);
+        dropdownSearch.focus();
+    }
+
+    function closeCustomDropdown() {
+        dropdownMenu.classList.remove('opacity-100', 'translate-y-0');
+        dropdownMenu.classList.add('opacity-0', 'translate-y-[-10px]');
+        dropdownArrow.classList.remove('rotate-180');
+        setTimeout(() => {
+            dropdownMenu.classList.add('hidden');
+        }, 200);
+    }
+
+    // Search filter
+    dropdownSearch.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const filtered = wifiList.filter(wifi => wifi.ssid.toLowerCase().includes(query));
+        renderCustomOptions(filtered);
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        const container = document.getElementById('customDropdownContainer');
+        if (container && !container.contains(e.target)) {
+            closeCustomDropdown();
+        }
+    });
+
+    // Panggil saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', populateWifiDropdown);
+
+    document.getElementById('helpForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const requestData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            location: document.getElementById('location').value.trim(),
+            issue: document.getElementById('issue').value.trim()
+        };
+
+        if (requestData.name && requestData.email && requestData.location && requestData.issue) {
+            await addHelpRequest(requestData);
+            
+            // Show toast
+            const toast = document.getElementById('success-toast');
+            toast.classList.remove('hidden');
+            void toast.offsetWidth;
+            toast.classList.add('translate-y-0', 'opacity-100');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            // Reset form
+            this.reset();
+            document.getElementById('dropdownSelectedValue').textContent = 'Pilih Lokasi WiFi...';
+            const triggerBtn = document.getElementById('dropdownTrigger');
+            triggerBtn.classList.remove('text-on-surface');
+            triggerBtn.classList.add('text-on-surface-variant');
+
+            setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+    });
+
+    function hideToast() {
+        const toast = document.getElementById('success-toast');
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+            toast.classList.add('hidden');
+        }, 300);
+    }
+</script>
+</body>
+</html>

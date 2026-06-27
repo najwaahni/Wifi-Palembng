@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Dashboard Peta Kota Palembang</title>
+    <meta name="description" content="Login ke Dashboard Admin Peta WiFi Kota Palembang">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+    <div class="login-page">
+        <!-- Floating Particles Background -->
+        <div class="login-particles" id="particles"></div>
+
+        <!-- Login Card — Glassmorphism -->
+        <div class="login-card">
+            <div class="login-logo">
+                <img src="../assets/images/palembang-logo.png" alt="Logo Kota Palembang">
+                <div class="logo-text">
+                    <h1>Dashboard Peta</h1>
+                    <p>Kota Palembang</p>
+                </div>
+            </div>
+
+            <h2>Masuk</h2>
+
+            <div class="login-error" id="loginError">
+                <span class="material-symbols-outlined" style="font-size:18px;">error</span>
+                <span id="errorText">Username atau password salah.</span>
+            </div>
+
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="btn-login" id="btnLogin">
+                    <span id="btnText">Login</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/wifi-data.js"></script>
+    <script>
+        // Generate floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                const size = Math.random() * 6 + 4;
+                span.style.width = size + 'px';
+                span.style.height = size + 'px';
+                span.style.left = Math.random() * 100 + '%';
+                span.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                span.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(span);
+            }
+        }
+        createParticles();
+
+        // Check if already logged in
+        if (isAdminLoggedIn()) {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorEl = document.getElementById('loginError');
+            const btn = document.getElementById('btnLogin');
+            const btnText = document.getElementById('btnText');
+
+            // Simple loading state
+            btnText.textContent = 'Memproses...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                if (adminLogin(username, password)) {
+                    // Success animation
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    btnText.textContent = '✓ Berhasil';
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 500);
+                } else {
+                    errorEl.classList.add('show');
+                    // Re-trigger shake animation
+                    errorEl.style.animation = 'none';
+                    void errorEl.offsetWidth;
+                    errorEl.style.animation = 'shake 0.4s ease';
+                    
+                    btnText.textContent = 'Login';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.background = '';
+                }
+            }, 600);
+        });
+
+        // Hide error on input
+        document.querySelectorAll('#loginForm input').forEach(input => {
+            input.addEventListener('input', () => {
+                document.getElementById('loginError').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
