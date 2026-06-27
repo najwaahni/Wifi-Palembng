@@ -1,4 +1,48 @@
+require('dotenv').config(); 
 
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// 2. Access the secret securely via process.env
+const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY; 
+
+app.post('/submit-form', async (req, res) => {
+    const token = req.body['cf-turnstile-response'];
+    
+    if (!token) {
+        return res.status(400).json({ success: false, message: "CAPTCHA token missing." });
+    }
+
+    try {
+        const cloudflareResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                secret: TURNSTILE_SECRET_KEY, // Used securely here
+                response: token
+            })
+        });
+
+        const result = await cloudflareResponse.json();
+
+        if (result.success) {
+            return res.send("Verified successfully!");
+        } else {
+            return res.status(400).send("Verification failed.");
+        }
+    } catch (error) {
+        return res.status(500).send("Internal Server Error.");
+    }
+});
+
+// Using PORT from .env, fallback to 3000 if not defined
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     // ============================================================
     // AUTH CHECK
     // ============================================================

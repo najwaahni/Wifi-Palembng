@@ -124,12 +124,23 @@ function fileToBase64(file) {
 // ============================================
 // Admin Auth Functions
 // ============================================
-function adminLogin(username, password) {
-    if (username === 'admin' && password === 'admin123') {
-        sessionStorage.setItem(ADMIN_AUTH_KEY, JSON.stringify({ user: 'admin', email: 'admin@gmail.com', loggedIn: true, time: Date.now() }));
-        return true;
+async function adminLogin(username, password, turnstileToken) {
+    try {
+        const res = await fetch(`${API_BASE}/admin/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, turnstileToken })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            sessionStorage.setItem(ADMIN_AUTH_KEY, JSON.stringify({ user: 'admin', email: 'admin@gmail.com', loggedIn: true, time: Date.now() }));
+        }
+        return data;
+    } catch (e) {
+        console.error('Admin login request failed', e);
+        return { success: false, message: 'Gagal terhubung ke server.' };
     }
-    return false;
 }
 
 function isAdminLoggedIn() {

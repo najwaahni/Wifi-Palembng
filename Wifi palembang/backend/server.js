@@ -13,6 +13,54 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
+async function verifyTurnstile(token, ip) {
+    const secretKey = process.env.TURNSTILE_SECRET_KEY;
+
+    if (!token) return false;
+    if (!secretKey || secretKey === 'YOUR_TURNSTILE_SECRET_KEY') {
+        console.warn('⚠️ TURNSTILE_SECRET_KEY belum diset di file .env');
+        return false;
+    }
+
+    const formData = new URLSearchParams();
+    formData.append('secret', secretKey);
+    formData.append('response', token);
+    if (ip) formData.append('remoteip', ip);
+
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        body: formData
+    });
+
+    const data = await response.json();
+    return Boolean(data.success);
+}
+
+app.post('/api/admin/login', async (req, res) => {
+    try {
+        const { username, password, turnstileToken } = req.body || {};
+        const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress || '';
+
+        if (!username || !password || !turnstileToken) {
+            return res.status(400).json({ success: false, message: 'Data login atau captcha belum lengkap.' });
+        }
+
+        const isCaptchaValid = await verifyTurnstile(turnstileToken, ip);
+        if (!isCaptchaValid) {
+            return res.status(403).json({ success: false, message: 'Verifikasi captcha gagal. Silakan coba lagi.' });
+        }
+
+        if (username === 'admin' && password === 'admin123') {
+            return res.json({ success: true, message: 'Login berhasil.' });
+        }
+
+        return res.status(401).json({ success: false, message: 'Username atau password salah.' });
+    } catch (err) {
+        console.error('Admin login error:', err);
+        return res.status(500).json({ success: false, message: 'Terjadi kesalahan server.' });
+    }
+});
+
 // ---------------------------------------------------------
 // WIFI LOCATIONS
 // ---------------------------------------------------------
